@@ -29,7 +29,7 @@ $(document).ready(function () {
     "#campo8",
     "#campo9",
     "#campo0"];
-    // Cuando llamo al boton de modificar estoy llamando a una clase llamada data,
+    // Cuando llamo al boton de modificar estoy llamando a una clase data,
     // tienen que cambiarlo a lo que necesiten
     $('.data').click(function () {
         let datosTabla = [];
@@ -45,7 +45,8 @@ $(document).ready(function () {
         $(array[4]).val(datosTabla[4]);
     })
 })
-function deleteLoQueNecesiten(supplier_nit) {
+// El valor que recibe la funcion es el id
+function deleteLoQueNecesiten(id) {
     Swal.fire({
         title: '¿Estas seguro?',
         text: "¡No podras revertir este cambio!",
@@ -57,14 +58,14 @@ function deleteLoQueNecesiten(supplier_nit) {
     }).then((result) => {
         if (result.isConfirmed) {
             $.ajax({
-                url: 'aqui tienen que poner la dirrecion de la api de eliminar'
+                url: 'aqui tienen que poner la dirrecion de la api de eliminar' + id
             })
             Swal.fire(
                 '¡Eliminado!',
                 'El usuario se ha eliminado.',
                 'success'
             ).then(() => {
-                location.href = "Como en el mio tocaba recargar la pagina entonces aqui pongo la dirrecion actual"
+                location.href = "Como en el mio tocaba recargar la pagina entonces aqui pongo la direccion actual del contexto"
             })
         }
     })
