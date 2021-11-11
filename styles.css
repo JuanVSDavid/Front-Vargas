@@ -40,6 +40,9 @@ body
     background-color: var(--light-color);
     color: #fff;
 }
+.btn-light-color:hover{
+    color: #fff;
+}
 .table-secondary-color{
     background-color: var(--secondary-color);
     color: #fff;
