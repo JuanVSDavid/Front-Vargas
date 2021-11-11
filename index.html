@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" rel="stylesheet" />
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" rel="stylesheet" />
+    <!-- MDB -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.6.0/mdb.min.css" rel="stylesheet" />
+    <!-- Styles Custom -->
+    <link rel="stylesheet" href="./styles.css">
+    <!-- CDN datatable -->
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.11.3/css/dataTables.bootstrap5.min.css">
+    <title>CRUD</title>
+</head>
+
+<body>
+    <!-- Navbar -->
+    <header>
+        <nav class="navbar fixed-top double-nav bg-primary-color p-3">
+            <div class="container-fluid">
+                <div class="float-left">
+                    <a data-mdb-toggle="offcanvas" data-mdb-target="#offcanvasWithBackdrop"
+                        aria-controls="offcanvasWithBackdrop" role="button">
+                        <i class="fa fa-bars"></i>
+                    </a>
+                </div>
+                <ul class="navbar-nav d-flex flex-row align-items-center">
+                    <li class="nav-item ms-3">
+                        Nombre del usuario
+                    </li>
+                    <li class="nav-item ms-3 dropdown">
+                        <a class="nav-link dropdown-toggle link-white" href="#" id="navbarDropdown" role="button"
+                            data-mdb-toggle="dropdown" aria-expanded="false">
+                            <i class="fas fa-user"></i>
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                            <li>
+                                <a class="dropdown-item" href="#">Ver perfil</a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item" href="#">Cerrar sesion</a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+            <div class="offcanvas offcanvas-start bg-primary-color" tabindex="-1" id="offcanvasWithBackdrop"
+                aria-labelledby="offcanvasWithBackdropLabel">
+                <div class="offcanvas-header">
+                    <img class="offcanvas-title" id="offcanvasWithBackdropLabel" src="./logovargas3.svg"
+                        width="100px" />
+                    <button type="button" class="btn" data-mdb-dismiss="offcanvas" aria-label="Close">
+                        <i class="fas fa-times fa-2x"></i>
+                    </button>
+                </div>
+                <div class="offcanvas-body d-flex flex-column justify-content-start">
+                    <a class="items-offcanvas">USUARIOS</a>
+                    <a class="items-offcanvas">PROVEEDORES</a>
+                    <a class="items-offcanvas">CLIENTES</a>
+                    <a class="items-offcanvas">PRODUCTOS</a>
+                    <a class="items-offcanvas">VENTAS</a>
+                    <a class="items-offcanvas">CONSODILACION</a>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <!-- End Navbar -->
+
+    <div id="intro">
+        <div class="p-100 h-100">
+            <div class="container">
+                <!--Search and add button-->
+                <div class="row mb-3">
+                    <!--button modal "Nuevo"-->
+                    <button type="button" class="btn btn-light-color col me-5 me-md-0 col-md-2" data-mdb-toggle="modal"
+                        data-mdb-target="#addUserModal">
+                        Nuevo
+                    </button>
+                    <!--Modal "Nuevo"-->
+                    <div class="modal fade" id="addUserModal" tabindex="-1" aria-labelledby="modal-label"
+                        aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="modal-label">Agregar Usuario</h5>
+                                    <button type="button" class="btn-close" data-mdb-dismiss="modal"
+                                        aria-label="Cerrar"></button>
+                                </div>
+                                <form class="p-3 needs-validation" action="#" novalidate>
+                                    <div class="modal-body">
+                                        <div class="row">
+                                            <div class="col-12">
+                                                <div class="form-outline mb-4">
+                                                    <input type="number" class="form-control" id="campo1" required>
+                                                    <!-- Tienen que cambiar el type segun sus necesidades -->
+                                                    <label class="form-label" for="campo1">Cambiar nombre</label>
+                                                    <div class="invalid-feedback">Mensaje de invalido.</div>
+                                                </div>
+                                            </div>
+                                            <div class="col-12">
+                                                <div class="form-outline mb-4">
+                                                    <input type="text" class="form-control" id="campo2" required>
+                                                    <label class="form-label" for="campo2">Cambiar nombre</label>
+                                                    <div class="invalid-feedback">Mensaje de invalido</div>
+                                                </div>
+                                            </div>
+                                            <div class="col-12">
+                                                <div class="form-outline mb-4">
+                                                    <input type="email" class="form-control" id="campo3" required>
+                                                    <label class="form-label" for="campo3">Cambiar nombre</label>
+                                                    <div class="invalid-feedback">Mensaje de invalido.</div>
+                                                </div>
+                                            </div>
+                                            <div class="col-12">
+                                                <div class="form-outline mb-4">
+                                                    <input type="text" class="form-control" id="campo4" required>
+                                                    <label class="form-label" for="campo4">Cambiar nombre</label>
+                                                    <div class="invalid-feedback">Mensaje de invalido.</div>
+                                                </div>
+                                            </div>
+                                            <div class="col-12">
+                                                <div class="form-outline">
+                                                    <input type="text" class="form-control" id="campo5" required>
+                                                    <label class="form-label" for="campo5">Cambiar nombre</label>
+                                                    <div class="invalid-feedback">Mensaje de invalido.</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button class="btn btn-light-color" type="submit">Crear</button>
+                                        <button type="button" class="btn btn-danger" data-mdb-dismiss="modal">
+                                            Cerrar
+                                        </button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- End modal "Nuevo"-->
+                    <div class="form-outline offset-md-6 col col-md-4">
+                        <input type="text" class="form-control" id="datatable-search">
+                        <label class="form-label" for="datatable-search">Buscar</label>
+                    </div>
+                </div>
+                <!--End Search-->
+                <!--table-->
+                <div class="table-responsive">
+                    <table id="datatable" class="table table-borderless table-striped align-middle">
+                        <thead class="table-secondary-color text-center">
+                            <tr>
+                                <th scope="col">Campo</th>
+                                <th scope="col">Campo</th>
+                                <th scope="col">Campo</th>
+                                <th scope="col">Campo</th>
+                                <th scope="col">Campo</th>
+                                <th scope="col">Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody class="text-center">
+                            <tr>
+                                <td scope="row"></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td>
+                                    <div class="btn-group" role="group" aria-label="crud">
+                                        <a type="button" class="btn btn-warning btn-sm data" data-mdb-toggle="modal"
+                                            data-mdb-target="#editarModal">
+                                            <i class="fas fa-edit fa-lg"></i>
+                                        </a>
+                                        <a type="button" class="btn btn-danger btn-sm" onclick="deleteLoQueNecesiten()">
+                                            <i class="fas fa-trash fa-lg"></i>
+                                        </a>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <!-- End table-->
+                <!--Modal Editar-->
+                <div class="modal fade" id="editarModal" tabindex="-1" aria-labelledby="editarModalLabel"
+                    aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="editarModalLabel">Editar Lo Que Necesiten</h5>
+                                <button type="button" class="btn-close" data-mdb-dismiss="modal" aria-label="Cancelar">
+                                </button>
+                            </div>
+                            <form class="p-3 needs-validation" novalidate>
+                                <div class="modal-body">
+                                    <div class="row">
+                                        <div class="col-12">
+                                            <div class="form-outline mb-4">
+                                                <input type="number" class="form-control" id="campo6" required>
+                                                <!-- Tienen que cambiar el type segun sus necesidades -->
+                                                <label class="form-label" for="campo6">Cambiar nombre</label>
+                                                <div class="invalid-feedback">Mensaje de invalido.</div>
+                                            </div>
+                                        </div>
+                                        <div class="col-12">
+                                            <div class="form-outline mb-4">
+                                                <input type="text" class="form-control" id="campo7" required>
+                                                <label class="form-label" for="campo7">Cambiar nombre</label>
+                                                <div class="invalid-feedback">Mensaje de invalido</div>
+                                            </div>
+                                        </div>
+                                        <div class="col-12">
+                                            <div class="form-outline mb-4">
+                                                <input type="email" class="form-control" id="campo8" required>
+                                                <label class="form-label" for="campo8">Cambiar nombre</label>
+                                                <div class="invalid-feedback">Mensaje de invalido.</div>
+                                            </div>
+                                        </div>
+                                        <div class="col-12">
+                                            <div class="form-outline mb-4">
+                                                <input type="text" class="form-control" id="campo9" required>
+                                                <label class="form-label" for="campo9">Cambiar nombre</label>
+                                                <div class="invalid-feedback">Mensaje de invalido.</div>
+                                            </div>
+                                        </div>
+                                        <div class="col-12">
+                                            <div class="form-outline">
+                                                <input type="text" class="form-control" id="campo0" required>
+                                                <label class="form-label" for="campo0">Cambiar nombre</label>
+                                                <div class="invalid-feedback">Mensaje de invalido.</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button class="btn btn-light-color" type="submit">Modificar</button>
+                                    <button type="button" class="btn btn-danger" data-mdb-dismiss="modal">
+                                        Cancelar
+                                    </button>
+                                </div>
+                        </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+    <!-- Script Datatables -->
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/1.11.3/js/dataTables.bootstrap5.min.js"></script>
+    <!-- MDB -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.6.0/mdb.min.js"></script>
+    <!-- Script Custom -->
+    <script type="text/javascript" src="./index.js"></script>
+    <script type="text/javascript" src="./main.js"></script>
+    <!-- Script SweetAlert -->
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</body>
+
+</html>
